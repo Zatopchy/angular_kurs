@@ -1,0 +1,23 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background:#477ab9;
+  width:100%;
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -ms-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  position: absolute;
+}
+
+body:hover{
+  background:#3D689C;
+}
+canvas{
+  position: absolute;
+  z-index: -1;
+}
+a {
+  color: #00B7FF;
+}

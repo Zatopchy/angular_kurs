@@ -1,0 +1,127 @@
+<ng-include src="'views/mainMenu.html'"></ng-include>
+<h2 class="text-light">{{ vm.title }}</h2>
+
+<form
+  ng-class="(vm.formWasValidated) ? 'was-validated': ''"
+  class="needs-validation text-light"
+  ng-submit="vm.sendForm()"
+  novalidate
+>
+  <div class="form-row text-light">
+    <div class="col-md-6 mb-3">
+      <label for="city">Город</label>
+      <input
+        ng-class="(vm.formModel.city.valid) ? '': 'is-invalid'"
+        ng-model="vm.formModel.city.value"
+        type="text"
+        class="form-control"
+        id="city"
+        ng-keyup="vm.validate()"
+      />
+      <div
+        class="bg-light"
+        ng-class="(vm.formModel.city.valid && vm.formWasValidated) ? 'valid-feedback': 'invalid-feedback'"
+      >
+        {{vm.formModel.city.infoText}}
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="country">Страна</label>
+      <input
+        ng-class="(vm.formModel.country.valid) ? '': 'is-invalid'"
+        ng-model="vm.formModel.country.value"
+        type="text"
+        class="form-control"
+        id="country"
+        ng-keyup="vm.validate()"
+      />
+      <div
+        class="bg-light"
+        ng-class="(vm.formModel.country.valid && vm.formWasValidated) ? 'valid-feedback': 'invalid-feedback'"
+      >
+        {{vm.formModel.country.infoText}}
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="population">Население</label>
+      <input
+        ng-class="(vm.formModel.population.valid) ? '': 'is-invalid'"
+        ng-model="vm.formModel.population.value"
+        ng-keyup="vm.validate()"
+        type="text"
+        class="form-control"
+        id="population"
+        value="ФИО"
+      />
+      <div
+        class="bg-light"
+        ng-class="(vm.formModel.population.valid && vm.formWasValidated) ? 'valid-feedback': 'invalid-feedback'"
+      >
+        {{vm.formModel.population.infoText}}
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-3 mb-4">
+      <label for="territory">Территория</label>
+      <input
+        ng-class="(vm.formModel.territory.valid) ? '': 'is-invalid'"
+        ng-model="vm.formModel.territory.value"
+        ng-keyup="vm.validate()"
+        type="text"
+        class="form-control"
+        id="territory"
+      />
+      <div
+        class="bg-light"
+        ng-class="(vm.formModel.territory.valid && vm.formWasValidated) ? 'valid-feedback': 'invalid-feedback'"
+      >
+        {{vm.formModel.territory.infoText}}
+      </div>
+    </div>
+    <div class="col-md-3 mb-4">
+      <label for="statcity">Статус</label>
+      <select
+        class="custom-select"
+        id="statcity"
+        ng-class="(vm.formModel.statcity.valid) ? '': 'is-invalid'"
+        ng-model="vm.formModel.statcity.value"
+        name="statcity"
+      >
+        <option selected value="Открыто">Открыто</option>
+        <option value="Закрыто">Закрыто</option>
+      </select>
+
+      <div
+        class="bg-light"
+        ng-class="(vm.formModel.statcity.valid && vm.formWasValidated) ? 'valid-feedback': 'invalid-feedback'"
+      >
+        {{vm.formModel.statcity.infoText}}
+      </div>
+    </div>
+    <div class="col-md-2 mb-4">
+      <label for="dateFinish">Дата основания</label>
+      <input
+        ng-model="vm.formModel.dateFinish.value"
+        ng-keyup="vm.validate()"
+        type="date"
+        class="form-control"
+        id="dateFinish"
+      />
+      <!--            <div class="valid-feedback">-->
+      <!--                Looks good!-->
+      <!--            </div>-->
+    </div>
+  </div>
+  <button
+    ng-disabled="!vm.formWasValidated"
+    class="btn btn-primary"
+    type="submit"
+  >
+    Добавить
+  </button>
+</form>
+
+<div ng-show="vm.error.length" class="alert alert-light" role="alert">
+  {{vm.error}}
+</div>
